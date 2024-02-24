@@ -4,6 +4,7 @@
 import UseCart from "@/hooks/UseCart"
 import PageContainer from "../containers/PageContainer"
 import Image from "next/image"
+import { Toaster } from "react-hot-toast"
 
 const CartClient = () => {
 
@@ -41,7 +42,9 @@ const CartClient = () => {
                     <div className="w-1/5 text-blue-600 cursor-pointer hover:bg-indigo-700 hover:text-lime-50 hover:rounded-2xl">{cart.name}</div>
                     <div className="w-1/5 text-slate-500 text-lg">{cart.quantity}</div>
                     <div className="w-1/5 text-violet-900">{cart.os}</div>
-                    <div className="w-1/5 border-4 border-red-500 rounded-xl cursor-pointer text-red-800 hover:bg-red-500 hover:text-lime-50">SİL</div>
+                    <div className="w-1/5">
+                    <div onClick={()=>{}} className="w-1/2 border-4 mx-auto  border-red-500 rounded-xl hover:scale-90 h-[60px] py-3 font-bold font-mono text-lg cursor-pointer text-red-800 hover:bg-red-500 hover:text-lime-50">SİL</div>
+                    </div>
                 </div>
                     <div className="w-full border-b-4 border-orange-300 h-1 mx-8"></div>
                </div>

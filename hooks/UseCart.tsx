@@ -2,6 +2,7 @@
 import { CardProductProps } from "@/app/components/detail/DetailClient";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import toast from "react-hot-toast";
 import { json } from "stream/consumers";
 
 interface CardContextProps {
@@ -37,7 +38,7 @@ useEffect(()=>{
         } else {
           updatedCart = [product];
         }
-
+        toast.success("Ürün sepete eklendi.")
         localStorage.setItem("cart",  JSON.stringify(updatedCart));
 
         return updatedCart;

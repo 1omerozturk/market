@@ -116,7 +116,7 @@ const DetailClient = ({ product }: { product: any }) => {
               src={product.coverImage}
               fill
               alt={""}
-              className="object-contain"
+              className="object-contain hover:scale-125 mt-8"
             />
           
           </div>
@@ -169,6 +169,7 @@ const DetailClient = ({ product }: { product: any }) => {
             <BootstrapButton
             onClick={()=> addToBasket(cardProduct)}
               variant="contained"
+              className="hover:scale-90"
               disableRipple
               // onClick={()=>router.push("/sepeteEkle")}
             >
