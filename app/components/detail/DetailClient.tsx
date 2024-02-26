@@ -157,6 +157,7 @@ const DetailClient = ({ product }: { product: any }) => {
               displayButton?
               <>
               <ButtonB
+              color="blue-600"
               text="Ürün Sepete ekli" outline small onClick={()=>{}}
               />
               </>

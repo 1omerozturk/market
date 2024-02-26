@@ -9,6 +9,10 @@ interface CardContextProps {
   productCartQty: number;
   cartPrdcts: CardProductProps[] | null;
   addToBasket: (product: CardProductProps) => void;
+  removeFromCart:(product:CardProductProps)=>void;
+  addToBasketIncrease :(product:CardProductProps)=>void;
+  addToBasketDecrease :(product:CardProductProps)=>void;
+  removeCart:()=>void;
 }
 
 const CartContext = createContext<CardContextProps | null>(null);
@@ -29,6 +33,22 @@ useEffect(()=>{
 }
 ,[]
 )
+
+
+
+
+const removeCart=useCallback(()=>{
+  setCartPrdcts(null)
+  toast.success("Sepetiniz Temizlendi.")
+  localStorage.setItem('cart',JSON.stringify([null]))
+},[])
+
+
+
+
+
+
+
   const addToBasket = useCallback(
     (product: CardProductProps) => {
       setCartPrdcts(prev => {
@@ -46,11 +66,65 @@ useEffect(()=>{
     },
     [cartPrdcts]
   );
+const removeFromCart=useCallback((product:CardProductProps)=>{
+  if(cartPrdcts){
+    
+const filteredProducts=cartPrdcts?.filter(cart=>cart.id !== product.id)
+setCartPrdcts(filteredProducts);
+toast.error("Ürün sepetten silinde")
+localStorage.setItem("cart",JSON.stringify(filteredProducts))
+  }
+},[cartPrdcts])
+
+
+const addToBasketIncrease = useCallback((product: CardProductProps) => {
+  let updatedCart;
+  if (product.quantity === 10) {
+      toast.error("Daha fazla ekleyemezsiniz.");
+      return;
+  }
+  
+  if (cartPrdcts) {
+      updatedCart = [...cartPrdcts];
+      const existingItemIndex = cartPrdcts.findIndex(item => item.id === product.id);
+
+      if (existingItemIndex !== -1) {
+          updatedCart[existingItemIndex].quantity = updatedCart[existingItemIndex].quantity + 1;
+      }
+      
+      setCartPrdcts(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+  }
+}, [cartPrdcts, setCartPrdcts]);
+
+const addToBasketDecrease = useCallback((product: CardProductProps) => {
+  let updatedCart;
+  if (product.quantity === 1) {
+      toast.error("Daha fazla Çıkaramaszınz.");
+      return;
+  }
+  
+  if (cartPrdcts) {
+      updatedCart = [...cartPrdcts];
+      const existingItemIndex = cartPrdcts.findIndex(item => item.id === product.id);
+
+      if (existingItemIndex !== -1) {
+          updatedCart[existingItemIndex].quantity = updatedCart[existingItemIndex].quantity - 1;
+      }
+      
+      setCartPrdcts(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+  }
+}, [cartPrdcts, setCartPrdcts]);
 
   let value: CardContextProps = {
     productCartQty,
     cartPrdcts,
+    removeFromCart,
     addToBasket,
+    removeCart,
+    addToBasketIncrease,
+    addToBasketDecrease,
   };
 
   return (

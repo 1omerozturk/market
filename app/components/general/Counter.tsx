@@ -9,7 +9,7 @@ interface CounterProps{
 }
 const Counter:React.FC<CounterProps> = ({productCard,increaseFunc,decreaseFunc}) => {
   return (
-    <div  className="relative items-center justify-center gap-2 my-3 lg:w-full">
+    <div  className="flex justify-center gap-2 my-3 mx-4 w-full">
 
     <Button className="cursor-pointer rounded-lg hover:bg-red-400 hover:scale-95 bg-red-700 text-black font-extrabold text-2xl"onClick={decreaseFunc}>-</Button>
     <div className="font-extrabold text-lg select-none">{productCard?.quantity}</div>

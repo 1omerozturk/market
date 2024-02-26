@@ -9,7 +9,7 @@ const Logo = () => {
   return (
     <Link href={"/"} className={commonClasses.button +"  px-2 text-black py-1 rounded-md text-lg md:text-2xl"}>
       
-      Nerde<span className="text-sm text-black">.</span><span className="text-sm text-red-500">com</span>
+      Nerde<span className="text-sm text-blue-500">.</span><span className="text-sm text-slate-800">com</span>
 
       </Link>
   )
