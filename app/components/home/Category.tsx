@@ -57,7 +57,7 @@ const Category = () => {
     'bg-green-500',
     'bg-purple-500',
     'bg-indigo-500',
-    'bg-pink-500',
+    'bg-cyan-500',
     'bg-gray-500',
     'bg-teal-500',
     'bg-orange-500',
@@ -72,7 +72,7 @@ const Category = () => {
     'bg-red-700',
     'bg-blue-700',
     'bg-green-700',
-    'bg-purple-700',
+    'bg-fushia-700',
     'bg-indigo-700',
     'bg-pink-700',
     'bg-gray-700',
@@ -87,7 +87,7 @@ const Category = () => {
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   return (
-    <div className="flex items-center px-3 md:px-10  md:py-10  justify-center gap-3 md:gap-10 py-5 md-py-8 overflow-x-auto whitespace-nowrap cursor-grab cursor-[webkit-grab] scrollbar-hide">
+    <div className="flex items-center px-3 md:px-10 bg-a  md:py-10  justify-center gap-3 md:gap-10 py-5 md-py-8 overflow-x-auto whitespace-nowrap cursor-grab cursor-[webkit-grab] scrollbar-hide">
       
       {
         categoryList.map((category, index) => (
