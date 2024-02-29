@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import CartProvider from "@/provider/CartProvider";
 import { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,16 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">{children}</main>
-            <Footer />
+             <div title="Başa Dön" className=" opacity-50 hover:opacity-100 fixed bottom-5 right-4 size-14 text-center items-center justify-center border-2 hover:border-blue-950 border-blue-600 rounded-full">
+        <button className=" mx-auto w-full text-3xl h-full">
+          <Link className="" href={"#start"}>
+          🔼
+          </Link>
+          </button>
+        </div>
+        <Footer />
           </div>
+       
         </CartProvider>
       </body>
     </html>

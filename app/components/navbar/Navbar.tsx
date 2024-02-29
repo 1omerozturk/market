@@ -3,10 +3,12 @@ import HamburgerMenu from "./HamburgerMenu"
 import Logo from "./Logo"
 import Search from "./Search"
 import User from "./User"
+import React from "react";
 
-const Navbar = () => {
+
+const Navbar:React.FC = () => {
   return (
-    <div className="text-slate-100 flex items-center justify-between gap-3 md:gap-10 px-3 md:px-10 h-16 bg-indigo-600">
+    <div id="start" className="text-slate-100 sticky-top flex items-center justify-between gap-3 md:gap-10 px-3 md:px-10 bg-indigo-600">
         
         <Logo/>
         <Search/>

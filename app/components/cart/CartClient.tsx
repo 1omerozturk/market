@@ -16,7 +16,7 @@ const CartClient = () => {
     return <div>Sepetinizde ürün bulunmamaktadır...</div>;
   }
 
-  let cartPrdctsTotal=cartPrdcts.reduce((acc:any,item:CardProductProps)=> acc+ item.price*item.quantity ,0)
+  let cartPrdctsTotal=cartPrdcts.reduce((acc:any,item:CardProductProps)=> acc+ item?.price*item?.quantity ,0)
 
   return (
     <div className="my-3 md:my-10 ">
@@ -29,22 +29,23 @@ const CartClient = () => {
           <div className="w-1/5"></div>
         </div>
         <div>
+          
           {cartPrdcts.map((cart) => (
             <div className="">
               <div
                 className="flex items-center justify-between text-center my-5"
-                key={cart.id}
+                key={cart?.id}
               >
                 <div className="w-1/5 flex items-center justify-center hover:scale-150 hover:cursor-cell">
-                  <Image src={cart.image} height={120} width={120} alt="" />
+                  <Image src={cart?.image} height={120} width={120} alt="" />
                 </div>
                 <div className="w-1/5 text-blue-600 cursor-pointer hover:bg-indigo-700 hover:text-lime-50 hover:rounded-2xl">
-                  {cart.name}
+                  {cart?.name}
                 </div>
                 <div className="w-1/5 text-slate-500 text-lg flex justify-center">
                 <Counter productCard={cart} increaseFunc={()=>addToBasketIncrease(cart)} decreaseFunc={()=>addToBasketDecrease(cart)}/>
                 </div>
-                <div className="w-1/5 text-violet-900">{cart.os}</div>
+                <div className="w-1/5 text-violet-900">{cart?.os}</div>
                 <div className="w-1/5">
                   <div
                     onClick={() => removeFromCart(cart)}
@@ -55,8 +56,8 @@ const CartClient = () => {
                 </div>
               </div>
               <div className="w-full border-b-4 border-orange-300 h-1 mx-8"></div>
-            </div>
-          ))}
+              </div>
+              ))}
         </div>
         <div className="flex items-center justify-between my-5 py-5 border-t-2">
             <button onClick={()=>removeCart()} className="w-1/5 unederline text-md font-bold border-2 hover:bg-red-600 hover:text-white hover:scale-95 border-red-500 hover:shadow-lg shadow-slate-950 ">Sepeti Temizle</button>
@@ -64,6 +65,7 @@ const CartClient = () => {
 
         </div>
       </PageContainer>
+        
     </div>
   );
 };

@@ -15,6 +15,7 @@ import { PreviewData } from "next";
 import ButtonB from "../general/ButtonB";
 import Comment from "./Comment";
 import UseCart from "@/hooks/UseCart";
+import Skeleton from "react-loading-skeleton";
 
 const textt: string = "text-center text-xl font-bold";
 const textt2: string =
@@ -92,7 +93,7 @@ const DetailClient = ({ product }: { product: any }) => {
 
   useEffect(()=>{
     setDisplayButton(false)
-    let controlDisplay:any=cartPrdcts?.findIndex(cart=>cart.id==product.id);
+    let controlDisplay:any=cartPrdcts?.findIndex(cart=>cart?.id==product.id);
     if(controlDisplay>-1) setDisplayButton(true)
   },[cartPrdcts])
 
@@ -113,7 +114,8 @@ const DetailClient = ({ product }: { product: any }) => {
         <div className="block md:flex gap-10 justify-center">
           <div className="relative file:h-[200px] md:h-[400px] w-[200px] md:w-[400px] mb-3 md:mb-0 mr-2 px-4">
             <Image
-              src={product.coverImage}
+            loading="lazy"
+              src={product.coverImage || <Skeleton />}
               fill
               alt={""}
               className="object-contain hover:scale-125 mt-8"

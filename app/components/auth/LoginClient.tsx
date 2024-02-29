@@ -9,8 +9,14 @@ import Input from "../general/Input";
 import Button from "../general/ButtonB";
 import Link from "next/link";
 import { IoPerson } from "react-icons/io5";
+import toast from "react-hot-toast";
+import {signIn} from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 const LoginClient = () => {
+
+  const router=useRouter();
+
   const {
     register,
     handleSubmit,
@@ -19,8 +25,21 @@ const LoginClient = () => {
   } = useForm<FieldValues>();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-  };
+   
+    signIn('credentials',{
+      ...data,
+      redirect:false,
+    }).then((callback)=>{
+      if(callback?.ok){
+        router.push('/cart');
+        router.refresh();
+        toast.success('Giriş işlemi başarılı ☺️☺️')
+      }
+      if(callback?.error){
+        toast.error(callback.error)
+      }
+    })
+  }
   return (
     <div>
       <AuthContainer>
