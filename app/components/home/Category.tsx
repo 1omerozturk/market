@@ -11,7 +11,7 @@ const Category = () => {
     preventDefault: () => void;
     clientX: React.SetStateAction<number>;
   }) => {
-    event.preventDefault(); // Prevent default browser behavior during dragging
+    event.preventDefault(); 
     setStartX(event.clientX);
     setIsDragging(true);
   };
@@ -25,8 +25,8 @@ const Category = () => {
   const handleMouseMove = (event:any) => {
     if (!isDragging) return;
   
-    const deltaX = (event.clientX - startX) * 0.15; // Apply damping factor (0.5)
-    categoryRef.current.scrollLeft -= deltaX;  // Update scroll position based on drag distance
+    const deltaX = (event.clientX - startX) * 0.15; 
+    categoryRef.current.scrollLeft -= deltaX;  
   };
   useEffect(() => {
     const handleWindowMouseUp = () => setIsDragging(false);
